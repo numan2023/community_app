@@ -7,14 +7,14 @@
 | nickname               | string | null: false |
 | email              | string | null: false |
 | encrypted_password | string | null: false |
-| age               | string | null: false |
 | term               | string | null: false |
-| past               | string | null: false |
-| student_type               | string | null: false |
-| hobby               | string | null: false |
+| hobby               | text | null: false |
 | learn_reason               | text | null: false |
 | career_pass               | text | null: false |
 | impressed_app               | string | null: false |
+| age               | string | null: false | ## 〇〇代 (Active_Hash)
+| past_career               | string | null: false | ## 〇〇代 (Active_Hash)
+| student_type               | string | null: false | ## 〇〇代 (Active_Hash)
 
 ### Association
 
@@ -27,10 +27,11 @@
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| content   | text | null: false |
-| image   | -- | null: false |
-| tag   | --- | null: false |
-| url   | text | null: false |
+| content   | string | null: false |
+| url   | string | null: true |
+| user   | references | null: false, foreign_key: true |
+| image   | -- | null: false | # Active Storage
+| tag   | --- | null: false |　# 追加実装
 
 ### Association
 
@@ -55,10 +56,11 @@
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| content   | text | null: false |
-| image   | -- | null: false |
-| tag   | --- | null: false |
-| url   | text | null: false |
+| content   | string | null: false |
+| url   | string | null: true |
+| user   | references | null: false, foreign_key: true |
+| image   | -- | null: false | # Active Storage
+| tag   | --- | null: false |　# 追加実装
 
 ### Association
 
@@ -79,14 +81,15 @@
 - belongs_to :job
 
 
-## others テーブル
+## other テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| content   | text | null: false |
-| image   | -- | null: false |
-| tag   | --- | null: false |
-| url   | text | null: false |
+| content   | string | null: false |
+| url   | string | null: true |
+| user   | references | null: false, foreign_key: true |
+| image   | -- | null: false | # Active Storage
+| tag   | --- | null: false |　# 追加実装
 
 ### Association
 

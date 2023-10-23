@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
+  devise_for :users
   root "posts#index"
+  resources :learnings, only: [:index, :new, :create, :edit, :update]
+  resources :jobs, only: [:index, :new, :create]
+  resources :others, only: [:index, :new, :create]
+  resources :users, only: [:edit, :update]
 end
