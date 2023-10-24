@@ -6,6 +6,9 @@
         <div class="post border-bottom  w-100">
           <div class="post-date small">
             投稿者：<%= job.user.nickname %> 投稿日時：<%= l job.created_at %>
+            <% if user_signed_in? && current_user.id == job.user_id %>
+              <%= link_to '編集', edit_job_path(job.id), class: "pb-3 mb-0 small lh-sm" %>
+            <% end %>
           </div>
           <div class="post-title small">
             タイトル：<%= job.url %>
@@ -17,10 +20,6 @@
         </div>
         <div id="like-btn<%= job.id %>">
           <%= render partial: "job_likes/like", locals: { job: job } %>
-
-          <% if user_signed_in? && current_user.id == job.user_id %>
-            <%= link_to '編集', edit_job_path(job.id), class: "pb-3 mb-0 small lh-sm" %>
-          <% end %>
         </div>
       <% end %>
 
