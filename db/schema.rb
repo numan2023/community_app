@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_075016) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_151246) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_075016) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "job_likes", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_likes_on_job_id"
+    t.index ["user_id"], name: "index_job_likes_on_user_id"
+  end
+
   create_table "jobs", charset: "utf8", force: :cascade do |t|
     t.string "content", null: false
     t.string "url"
@@ -46,6 +55,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_075016) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "learning_likes", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "learning_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learning_id"], name: "index_learning_likes_on_learning_id"
+    t.index ["user_id"], name: "index_learning_likes_on_user_id"
   end
 
   create_table "learnings", charset: "utf8", force: :cascade do |t|
@@ -86,7 +104,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_075016) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "job_likes", "jobs"
+  add_foreign_key "job_likes", "users"
   add_foreign_key "jobs", "users"
+  add_foreign_key "learning_likes", "learnings"
+  add_foreign_key "learning_likes", "users"
   add_foreign_key "learnings", "users"
   add_foreign_key "others", "users"
 end

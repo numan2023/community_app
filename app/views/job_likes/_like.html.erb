@@ -1,0 +1,11 @@
+<style>
+  .job_likes{
+    text-decoration: none;
+  }
+</style>
+
+<% if user_signed_in? && job.job_liked_by?(current_user)%>
+  <%=link_to "🤩", job_job_likes_path(job.id),  data: { turbo_method: :delete }, class: "job_likes", remote: true %>
+<% else %>
+  <%=link_to image_tag("star.png", class:"job_likes"), job_job_likes_path(job.id), data: { turbo_method: :post }, remote: true %>
+<% end %>

@@ -1,91 +1,93 @@
-<div class='account-page' id='account-page'>
-  <div class='account-page__inner clearfix'>
-    <div class='account-page__inner--left account-page__header'>
-      <h2>Create Account</h2>
-      <h5>新規アカウントの作成</h5>
-    </div>
-    <div class='account-page__inner--right user-form'>
-      <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|%>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :nickname%>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :nickname, autofocus: true%>
-          </div>
-        </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :email%>
-          </div>
-          <div class='field-input'>
-            <%= f.email_field :email%>
-          </div>
-        </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :password%>
-            <i>(英数字6文字以上)</i>
-          </div>
-          <div class='field-input'>
-            <%= f.password_field :password, autocomplete: "off"%>
-          </div>
-        </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :password_confirmation%>
-          </div>
-          <div class='field-input'>
-            <%= f.password_field :password_confirmation, autocomplete: "off"%>
-          </div>
-        </div>
-
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :term%>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :term, autofocus: true%>
-          </div>
-        </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :hobby%>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :hobby, autofocus: true%>
-          </div>
-        </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :learn_reason%>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :learn_reason, autofocus: true%>
-          </div>
-        </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :career_pass%>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :career_pass, autofocus: true%>
-          </div>
-        </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :impressd_app%>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :impressed_app, autofocus: true%>
-          </div>
-        </div>
-
-        <div class='actions'>
-          <%= f.submit "Create Account", class: 'btn'%>
-        </div>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class='account-page' id='account-page'>
+    <div class='account-page__inner clearfix'>
+      <div class='account-page__inner--left account-page__header'>
+        <h2>Create Account</h2>
+        <h5>新規アカウントの作成</h5>
       </div>
-    <% end %>
+      <div class='account-page__inner--right user-form'>
+        <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|%>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :nickname%>
+            </div>
+            <div class='field-input'>
+              <%= f.text_field :nickname, autofocus: true%>
+            </div>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :email%>
+            </div>
+            <div class='field-input'>
+              <%= f.email_field :email%>
+            </div>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :password%>
+              <i>(英数字6文字以上)</i>
+            </div>
+            <div class='field-input'>
+              <%= f.password_field :password, autocomplete: "off"%>
+            </div>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :password_confirmation%>
+            </div>
+            <div class='field-input'>
+              <%= f.password_field :password_confirmation, autocomplete: "off"%>
+            </div>
+          </div>
+
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :term%>
+            </div>
+            <div class='field-input'>
+              <%= f.text_field :term, autofocus: true%>
+            </div>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :hobby%>
+            </div>
+            <div class='field-input'>
+              <%= f.text_field :hobby, autofocus: true%>
+            </div>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :learn_reason%>
+            </div>
+            <div class='field-input'>
+              <%= f.text_field :learn_reason, autofocus: true%>
+            </div>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :career_pass%>
+            </div>
+            <div class='field-input'>
+              <%= f.text_field :career_pass, autofocus: true%>
+            </div>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :impressd_app%>
+            </div>
+            <div class='field-input'>
+              <%= f.text_field :impressed_app, autofocus: true%>
+            </div>
+          </div>
+
+          <div class='actions'>
+            <%= f.submit "Create Account", class: 'btn'%>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+</main>

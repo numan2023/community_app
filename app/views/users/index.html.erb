@@ -1,0 +1,33 @@
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+      <h1 class="h3 pt-3 pb-2 border-bottom">Users Table</h1>
+
+          <div class="table-responsive">
+            <table class="table table-hover m-2 text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Nickname</th>
+                    <th scope="col">Term</th>
+                    <th scope="col">Hobby</th>
+                    <th scope="col">Impressed-App</th>
+                    <th scope="col">Learn-Reason</th>
+                    <th scope="col">Past-Work-Experiences</th>
+                    <th scope="col">Future-Career</th>
+                  </tr>
+                </thead>
+              <% @users.each do |user| %>
+                <tbody>
+                  <tr>
+                    <td><%= user.nickname %></td>
+                    <td><%= user.term %></td>
+                    <td><%= user.hobby %></td>
+                    <td><%= user.impressed_app %></td>
+                    <td><%= user.learn_reason %></td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              <% end %>
+            </table>
+          </div>
+        </main>

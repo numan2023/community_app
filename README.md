@@ -13,8 +13,8 @@
 | career_pass               | text | null: false |
 | impressed_app               | string | null: false |
 | age               | string | null: false | ## 〇〇代 (Active_Hash)
-| past_career               | string | null: false | ## 〇〇代 (Active_Hash)
-| student_type               | string | null: false | ## 〇〇代 (Active_Hash)
+| past_career               | string | null: false | ## (Active_Hash)
+| student_type               | string | null: false | ## (Active_Hash)
 
 ### Association
 

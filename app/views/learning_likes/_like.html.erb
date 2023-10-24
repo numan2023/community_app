@@ -1,0 +1,11 @@
+    <style>
+      .learning_likes{
+        text-decoration: none;
+      }
+    </style>
+
+<% if user_signed_in? && learning.learning_liked_by?(current_user)%>
+  <%=link_to "🤩", learning_learning_likes_path(learning.id),  data: { turbo_method: :delete }, class: "learning_likes", remote: true %>
+<% else %>
+  <%=link_to image_tag("star.png", class:"learning_likes"), learning_learning_likes_path(learning.id), data: { turbo_method: :post }, remote: true %>
+<% end %>

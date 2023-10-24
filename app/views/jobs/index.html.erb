@@ -1,32 +1,32 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-      <h1 class="h3 pt-3 pb-2 border-bottom">Learning : Chat Room</h1>
+      <h1 class="h3 pt-3 pb-2 border-bottom">Job : Chat Room</h1>
 
-      <% @learnings.each do |learning| %>
+      <% @jobs.each do |job| %>
         <div class="post border-bottom  w-100">
           <div class="post-date small">
-            投稿者：<%= learning.user.nickname %> 投稿日時：<%= l learning.created_at %>
+            投稿者：<%= job.user.nickname %> 投稿日時：<%= l job.created_at %>
           </div>
           <div class="post-title small">
-            タイトル：<%= learning.url %>
+            タイトル：<%= job.url %>
           </div>
           <div class="post-content">
-            <%= learning.content %>
+            <%= job.content %>
           </div>
-          <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
+          <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
         </div>
-        <div id="like-btn<%= learning.id %>">
-          <%= render partial: "learning_likes/like", locals: { learning: learning } %>
+        <div id="like-btn<%= job.id %>">
+          <%= render partial: "job_likes/like", locals: { job: job } %>
 
-          <% if user_signed_in? && current_user.id == learning.user_id %>
-            <%= link_to '編集', edit_learning_path(learning.id), class: "pb-3 mb-0 small lh-sm" %>
+          <% if user_signed_in? && current_user.id == job.user_id %>
+            <%= link_to '編集', edit_job_path(job.id), class: "pb-3 mb-0 small lh-sm" %>
           <% end %>
         </div>
       <% end %>
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="100"></canvas>
 
-      <%= form_with(model: @learning, class: 'form sticky-bottom', local: true) do |f| %>
+      <%= form_with(model: @job, class: 'form sticky-bottom', local: true) do |f| %>
         <div class="form-input">
           <%= f.text_field :content, class: 'form-message', placeholder: 'Tipsを投稿しよう!' %>
           <label class="form-image">

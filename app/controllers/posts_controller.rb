@@ -1,12 +1,8 @@
 class PostsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
   
   def index
+    @learnings = Learning.joins(:learning_likes).group(:learning_id).order('count(learning_id) desc')
+    @jobs = Job.joins(:job_likes).group(:job_id).order('count(job_id) desc')
   end
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
 end

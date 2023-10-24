@@ -1,0 +1,2 @@
+module JobLikesHelper
+end

@@ -7,7 +7,7 @@ class LearningsController < ApplicationController
   def create
     @learning = Learning.new(learning_params)
     if @learning.save
-      redirect_to learnings_path
+      redirect_to action: :index
     else
       @learnings = Learning.includes(:user)
       render :index, status: :unprocessable_entity
@@ -21,7 +21,11 @@ class LearningsController < ApplicationController
   def update
     learning = Learning.find(params[:id])
     learning.update(learning_params)
-    redirect_to learnings_path
+    redirect_to action: :index
+  end
+
+  def search
+    @learnings = Learning.search(params[:keyword])
   end
 
   private
