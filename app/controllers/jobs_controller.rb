@@ -30,7 +30,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:content, :image, :url).merge(user_id: current_user.id)
+    params.require(:job).permit(:title, :content, :image).merge(user_id: current_user.id)
   end
 
 end

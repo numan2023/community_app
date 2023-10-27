@@ -3,6 +3,9 @@
       <h1 class="h3 pt-3 pb-2 border-bottom">Edit : Learning Chat Room</h1>
 
       <%= form_with(model: @learning, class: 'form', local: true) do |f| %>
+        <div class="form-title">
+          <%= f.text_field :title, class: 'form-message', placeholder: 'タイトル!' %>
+        </div>
         <div class="form-input">
           <%= f.text_field :content, class: 'form-message', placeholder: 'Tipsを編集しよう!' %>
           <label class="form-image">
@@ -10,7 +13,7 @@
             <%= f.file_field :image, class: 'hidden' %>
           </label>
         </div>
-        <%= f.submit '送信', class: 'form-submit' %>
+        <%= f.submit '更新', class: 'form-submit' %>
       <% end %>
 
     </main>
