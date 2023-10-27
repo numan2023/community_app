@@ -6,10 +6,10 @@ class LearningsController < ApplicationController
 
   def create
     @learning = Learning.new(learning_params)
-    if @learning.save
+    if @learning.valid?
+      @learning.save
       redirect_to action: :index
     else
-      @learnings = Learning.includes(:user)
       render :index, status: :unprocessable_entity
     end
   end
@@ -30,7 +30,7 @@ class LearningsController < ApplicationController
 
   private
   def learning_params
-    params.require(:learning).permit(:content, :image, :url).merge(user_id: current_user.id)
+    params.require(:learning).permit(:title, :content, :image).merge(user_id: current_user.id)
   end
 
 end
