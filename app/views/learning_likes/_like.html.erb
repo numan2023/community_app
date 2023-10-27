@@ -4,10 +4,8 @@
       }
     </style>
 
-<div id="like-btn<%= learning.id %>">
-  <% if user_signed_in? && learning.learning_liked_by?(current_user)%>
-    <%=link_to image_tag("star_gif.gif", class:"learning_likes", size: '30x30'), learning_learning_likes_path(learning.id),  data: { turbo_method: :delete }, class: "learning_likes" %>
-  <% else %>
-    <%=link_to image_tag("star.png", class:"learning_likes", size: "20x20"), learning_learning_likes_path(learning.id), data: { turbo_method: :post }, class: "learning_likes" %>
-  <% end %>
- </div>
+<% if user_signed_in? && learning.learning_liked_by?(current_user)%>
+  <%=link_to image_tag("star_gif.gif", class:"learning_likes", size: '30x30'), learning_learning_likes_path(learning.id),  data: { turbo_method: :delete }, class: "learning_likes", remote: true %>
+<% else %>
+  <%=link_to image_tag("star.png", class:"learning_likes", size: "20x20"), learning_learning_likes_path(learning.id), data: { turbo_method: :post }, class: "learning_likes", remote: true %>
+<% end %>
