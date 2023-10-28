@@ -5,7 +5,7 @@
 </style>
 
 <% if user_signed_in? && job.job_liked_by?(current_user)%>
-  <%=link_to image_tag("star_gif.gif", class:"learning_likes", size: "30x30"), job_job_likes_path(job.id),  data: { turbo_method: :delete }, class: "job_likes", remote: true %>
+  <%=link_to image_tag("star_gif.gif", class:"learning_likes", size: "30x30"), job_job_likes_path(job.id),  data: { turbo_method: :delete }, class: "job_likes" %>
 <% else %>
-  <%=link_to image_tag("star.png", class:"job_likes", size: "20x20"), job_job_likes_path(job.id), data: { turbo_method: :post }, remote: true %>
+  <%=link_to image_tag("star.png", class:"job_likes", size: "20x20"), job_job_likes_path(job.id), data: { turbo_method: :post }, class: "job_likes" %>
 <% end %>
