@@ -54,11 +54,21 @@ https://community-app-64tj.onrender.com/
 - 投稿された情報に評価することができる
 https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 
+
 ## 実装予定の機能
 
-- 非同期通信
-- タグ付け
-- 詳細検索
+1. 非同期通信
+    - リクエストのたびにブラウザを再読み込みせずに、ページの一部分飲みが更新される通信によって、UXを向上させる。
+    - 実装予定：数日以内
+2. タグ付け
+    - タグ付けすることでキーワードによる分類で情報を整理できるため、検索機能など含め、ユーザーの求める情報へのアクセスが向上する。
+    - 実装予定：数日以内
+3. 詳細検索
+    - 検索による情報の絞り方を多様化することで必要な情報へのアクセスがより簡単になり、UX向上につながる。
+    - 実装予定：数日以内
+4. 良投稿内容に対するポイント付与（いいねの数）
+    - アプリの価値は「投稿してくれるユーザーの増加（量）×価値の高い投稿が増えること（質）」であるため、その両方へのインセンティブ設計としてポイントを付与する。
+    - 実装予定：数週間以内
 
 ## データベース設計
 
@@ -72,16 +82,17 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 
 - Ruby on Rails
 - Bootstrap
+- HTML,CSS
 - JavaScript
 
 ## ローカルでの動作方法
 
-% git clone https://github.com/numan2023/community_app.git
-% cd community_app
-% bundle install
-% rails db:create
-% rails db:migrate
-% rails s
+- % git clone https://github.com/numan2023/community_app.git
+- % cd community_app
+- % bundle install
+- % rails db:create
+- % rails db:migrate
+- % rails s
 
 ## 工夫したポイント
 
@@ -103,9 +114,9 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 | learn_reason       | text   | null: false |
 | career_pass        | text   | null: false |
 | impressed_app      | string | null: false |
-| age                | string | null: false | ## 〇〇代 (Active_Hash)
-| past_career        | string | null: false | ## (Active_Hash)
-| student_type       | string | null: false | ## (Active_Hash)
+| age                | string | null: false |
+| past_career        | string | null: false |
+| student_type       | string | null: false |
 
 ### Association
 
@@ -121,7 +132,7 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 | title   | string     | null: false                    |
 | content | text       | null: true                     |
 | user    | references | null: false, foreign_key: true |
-| tag     | ---------- | null: false                    |
+| tag     | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -149,7 +160,7 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 | title   | string     | null: false                    |
 | content | text       | null: true                     |
 | user    | references | null: false, foreign_key: true |
-| tag     | ---------- | null: false                    |
+| tag     | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -177,7 +188,7 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 | title   | string     | null: false                    |
 | content | text       | null: true                     |
 | user    | references | null: false, foreign_key: true |
-| tag     | ---------- | null: false                    |
+| tag     | references | null: false, foreign_key: true |
 
 ### Association
 
