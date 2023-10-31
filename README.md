@@ -52,8 +52,7 @@ https://community-app-64tj.onrender.com/
 ## 実装した機能についての画像やGIF及びその他説明
 
 - 投稿された情報に評価することができる
-https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
-
+<img src="https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif" width="400">
 
 ## 実装予定の機能
 
