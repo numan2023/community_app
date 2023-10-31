@@ -121,14 +121,17 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 ### Association
 
 - has_many :learnings
+- has_many :learning_likes
 - has_many :jobs
+- has_many :job_likes
 - has_many :others
+- has_many :other_likes
 
 
 ## learning テーブル
 
 | Column  | Type       | Options                        |
-| ------- | ---------- | null: false                    |
+| ------- | ---------- | ------------------------------ |
 | title   | string     | null: false                    |
 | content | text       | null: true                     |
 | user    | references | null: false, foreign_key: true |
@@ -137,7 +140,7 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 ### Association
 
 - belongs_to :user
-- has_many :learning_users_likes
+- has_many :learning_likes
 
 
 ## learning_users_like テーブル
@@ -156,7 +159,7 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 ## job テーブル
 
 | Column  | Type       | Options                        |
-| ------- | ---------- | null: false                    |
+| ------- | ---------- | ------------------------------ |
 | title   | string     | null: false                    |
 | content | text       | null: true                     |
 | user    | references | null: false, foreign_key: true |
@@ -165,10 +168,10 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 ### Association
 
 - belongs_to :user
-- has_many :learning_users_likes
+- has_many :learning_likes
 
 
-## jpb_users_like テーブル
+## job_users_like テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -184,7 +187,7 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 ## other テーブル
 
 | Column  | Type       | Options                        |
-| ------- | ---------- | null: false                    |
+| ------- | ---------- | ------------------------------ |
 | title   | string     | null: false                    |
 | content | text       | null: true                     |
 | user    | references | null: false, foreign_key: true |
@@ -193,7 +196,7 @@ https://i.gyazo.com/92636ba258e38712c7a1d42389899715.gif
 ### Association
 
 - belongs_to :user
-- has_many :learning_users_likes
+- has_many :learning_likes
 
 
 ## other_users_like テーブル
