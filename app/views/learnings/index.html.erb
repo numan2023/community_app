@@ -2,6 +2,9 @@
 
       <h1 class="h3 pt-3 pb-2 border-bottom">Learning : Chat Room</h1>
 
+      <div id="list">
+      </div>
+
       <% @learnings.each do |learning| %>
         <div class="post border-bottom  w-100">
           <div class="post-date small">
@@ -25,7 +28,7 @@
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
 
-      <%= form_with(model: @learning, class: 'form sticky-bottom', local: true) do |f| %>
+      <%= form_with(model: @learning, class: 'form sticky-bottom', local: true, id: "form") do |f| %>
         <div class="form-title">
           <%= f.text_field :title, class: 'form-message', placeholder: 'タイトル' %>
         </div>
@@ -36,7 +39,7 @@
             <%= f.file_field :image, class: 'hidden' %>
           </label>
         </div>
-        <%= f.submit '送信', class: 'form-submit' %>
+        <%= f.submit '送信', class: 'form-submit', id: "submit" %>
       <% end %>
 
     </main>
