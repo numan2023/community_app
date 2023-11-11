@@ -12,6 +12,8 @@
                   <strong class="d-block text-gray-dark pb-1 mb-1"><%= learning.title %></strong>
                   <%= learning.content %>
                 </p>
+                  <%= image_tag 'star_gif.gif' , size: '20x20' ,class: "purchase-btn-icon" %>
+                  <%= learning.learning_likes.count %>
               </div>
             <% end %>
 
@@ -32,6 +34,8 @@
                   <strong class="d-block text-gray-dark pb-1 mb-1"><%= job.title %></strong>
                   <%= job.content %>
                 </p>
+                  <%= image_tag 'star_gif.gif' , size: '20x20' ,class: "purchase-btn-icon" %>
+                  <%= job.job_likes.count %>
               </div>
             <% end %>
 

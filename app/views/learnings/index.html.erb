@@ -1,6 +1,10 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
       <h1 class="h3 pt-3 pb-2 border-bottom">Learning : Chat Room</h1>
+      <%= form_with(url: search_learnings_path, local: true, method: :get, class: "d-flex") do |form| %>
+        <%= form.text_field :keyword, placeholder: "タイトルを検索する", class: "form-control me-2" %>
+        <%= form.submit "検索", class: "btn btn-outline-success" %>
+      <% end %>
 
 
       <% @learnings.each do |learning| %>
@@ -59,7 +63,7 @@
           <%= f.text_field :title, class: 'form-message', placeholder: 'タイトル', id: "title" %>
         </div>
         <div class="form-input">
-          <%= f.text_field :content, class: 'form-message', placeholder: 'Tipsを投稿しよう!', id: "content" %>
+          <%= f.text_field :content, class: 'form-message', placeholder: 'テキスト：Tipsを投稿しよう!', id: "content" %>
           <label class="form-image">
             <span class="image-file">画像</span>
             <%= f.file_field :image, class: 'hidden' %>
