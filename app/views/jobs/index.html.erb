@@ -3,24 +3,49 @@
       <h1 class="h3 pt-3 pb-2 border-bottom">Job : Chat Room</h1>
 
       <% @jobs.each do |job| %>
-        <div class="post border-bottom  w-100">
-          <div class="post-date small">
-            投稿者：<%= job.user.nickname %> 投稿日時：<%= l job.created_at %>
-            <% if user_signed_in? && current_user.id == job.user_id %>
-              <%= link_to '編集', edit_job_path(job.id), class: "pb-3 mb-0 small lh-sm" %>
-            <% end %>
+        <% if job.user == current_user %>
+          <div class="text-end">
+            <div class="post border-bottom  w-100">
+              <div class="post-date small">
+                投稿者：<%= job.user.nickname %> 投稿日時：<%= l job.created_at %>
+                <% if user_signed_in? && current_user.id == job.user_id %>
+                  <%= link_to '編集', edit_job_path(job.id), class: "pb-3 mb-0 small lh-sm" %>
+                <% end %>
+              </div>
+              <div class="post-title small">
+                タイトル：<%= job.title %>
+              </div>
+              <div class="post-content">
+                <%= job.content %>
+              </div>
+              <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
+            </div>
+            <div id="like-btn<%= job.id %>">
+              <%= render partial: "job_likes/like", locals: { job: job } %>
+            </div>
           </div>
-          <div class="post-title small">
-            タイトル：<%= job.title %>
+        <% else %>
+          <div class="text-start">
+            <div class="post border-bottom  w-100">
+              <div class="post-date small">
+                投稿者：<%= job.user.nickname %> 投稿日時：<%= l job.created_at %>
+                <% if user_signed_in? && current_user.id == job.user_id %>
+                  <%= link_to '編集', edit_job_path(job.id), class: "pb-3 mb-0 small lh-sm" %>
+                <% end %>
+              </div>
+              <div class="post-title small">
+                タイトル：<%= job.title %>
+              </div>
+              <div class="post-content">
+                <%= job.content %>
+              </div>
+              <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
+            </div>
+            <div id="like-btn<%= job.id %>">
+              <%= render partial: "job_likes/like", locals: { job: job } %>
+            </div>
           </div>
-          <div class="post-content">
-            <%= job.content %>
-          </div>
-          <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
-        </div>
-        <div id="like-btn<%= job.id %>">
-          <%= render partial: "job_likes/like", locals: { job: job } %>
-        </div>
+        <% end %>
       <% end %>
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
