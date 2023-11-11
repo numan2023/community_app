@@ -2,38 +2,64 @@
 
       <h1 class="h3 pt-3 pb-2 border-bottom">Learning : Chat Room</h1>
 
-      <div id="list">
-      </div>
 
       <% @learnings.each do |learning| %>
-        <div class="post border-bottom  w-100">
-          <div class="post-date small">
-            投稿者：<%= learning.user.nickname %> 投稿日時：<%= l learning.created_at %>
-            <% if user_signed_in? && current_user.id == learning.user_id %>
-              <%= link_to '編集', edit_learning_path(learning.id), class: "pb-3 mb-0 small lh-sm" %>
-            <% end %>
+        <% if learning.user == current_user %>
+          <div class="text-end">
+            <div class="post border-bottom w-100">
+              <div class="post-date small">
+                投稿者：<%= learning.user.nickname %> 投稿日時：<%= l learning.created_at %>
+                <% if user_signed_in? && current_user.id == learning.user_id %>
+                  <%= link_to '編集', edit_learning_path(learning.id), class: "pb-3 mb-0 small lh-sm" %>
+                <% end %>
+              </div>
+              <div class="post-title small">
+                タイトル：<%= learning.title %>
+              </div>
+              <div class="post-content">
+                <%= learning.content %>
+              </div>
+              <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
+            </div>
+            <div id="like-btn<%= learning.id %>">
+              <%= render partial: "learning_likes/like", locals: { learning: learning } %>
+            </div>
           </div>
-          <div class="post-title small">
-            タイトル：<%= learning.title %>
+        <% else %>
+          <div class="text-start">
+            <div class="post border-bottom w-100">
+              <div class="post-date small">
+                投稿者：<%= learning.user.nickname %> 投稿日時：<%= l learning.created_at %>
+                <% if user_signed_in? && current_user.id == learning.user_id %>
+                  <%= link_to '編集', edit_learning_path(learning.id), class: "pb-3 mb-0 small lh-sm" %>
+                <% end %>
+              </div>
+              <div class="post-title small">
+                タイトル：<%= learning.title %>
+              </div>
+              <div class="post-content">
+                <%= learning.content %>
+              </div>
+              <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
+            </div>
+            <div id="like-btn<%= learning.id %>">
+              <%= render partial: "learning_likes/like", locals: { learning: learning } %>
+            </div>
           </div>
-          <div class="post-content">
-            <%= learning.content %>
-          </div>
-          <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
-        </div>
-        <div id="like-btn<%= learning.id %>">
-          <%= render partial: "learning_likes/like", locals: { learning: learning } %>
-        </div>
+        <% end %>
       <% end %>
+
+      <div id="list">
+      </div>
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
 
       <%= form_with(model: @learning, class: 'form sticky-bottom', local: true, id: "form") do |f| %>
         <div class="form-title">
-          <%= f.text_field :title, class: 'form-message', placeholder: 'タイトル' %>
+          <%= f.text_field :title, class: 'form-message', placeholder: 'タイトル', id: "title" %>
         </div>
         <div class="form-input">
-          <%= f.text_field :content, class: 'form-message', placeholder: 'Tipsを投稿しよう!' %>
+          <%= f.text_field :content, class: 'form-message', placeholder: 'Tipsを投稿しよう!', id: "content" %>
           <label class="form-image">
             <span class="image-file">画像</span>
             <%= f.file_field :image, class: 'hidden' %>

@@ -4,20 +4,14 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.112.5">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_include_tag  "turbo" ,type: "module" %>
+    <%#= javascript_include_tag  "turbo" ,type: "module" %>
 
     <title>Community App</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -169,11 +163,6 @@
 
     </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
   </head>
 
   <body>
@@ -202,77 +191,60 @@
               <ul class="nav flex-column align-items-center">
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
-
                     <%= link_to 'Users Table', "/users", class: "nav-template" %>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
-
                     <%= link_to 'Learning', "/learnings", class: "nav-template" %>
-                    <%#= link_to image_tag("star.png", class:"furima-icon"), "/learnings" %>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
-
                     <%= link_to 'Job', "/jobs", class: "nav-template" %>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="#">
 
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2 mt-1" href="#">
                     Others
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="#">
-
-                    
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="#">
-
-                    
                   </a>
                 </li>
               </ul>
 
               <h6 class="nav flex-column mb-auto align-items-center pb-1 px-3 mt-4 mb-1 text-body-secondary text-uppercase">
                 <span class="border-bottom">Reports</span>
-                <a class="link-secondary" href="#" aria-label="Add a new report">
-
-                </a>
               </h6>
               <ul class="nav flex-column mb-auto align-items-center">
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
-
                     Current month
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
-
                     Last quarter
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
-
                     Social engagement
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
-
                     Others
                   </a>
                 </li>
               </ul>
 
               <hr class="my-3">
+
+              <h6 class="nav flex-column mb-auto align-items-center pb-1 px-3 mt-1 mb-1 text-body-secondary text-uppercase">
+                <span class="border-bottom">Reports</span>
+              </h6>
 
               <ul class="nav flex-column mb-auto align-items-center">
                 <% if user_signed_in? %>
@@ -284,7 +256,7 @@
                 <% end %>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
-                      <%= link_to "Sing out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-template" %>
+                      <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-template" %>
                   </a>
                 </li>
               </ul>
