@@ -2,3 +2,20 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        term: 期
+        hobby: 趣味
+        learn_reason: 学習理由
+        career_pass: キャリアパス
+        impressed_app: 印象的なアプリ
+      learning:
+        title: タイトル
+        content: テキスト
+      job:
+        title: タイトル
+        content: テキスト

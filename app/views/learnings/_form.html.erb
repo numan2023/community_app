@@ -1,4 +1,7 @@
 <%= form_with model: @learning_form,  url: url, method: method, id: "form", class: 'sticky-bottom', local: true do |f| %>
+
+  <%= render 'layouts/error_messages', model: f.object %>
+
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">タイトル</label>
     <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル', id: "title" %>

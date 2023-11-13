@@ -11,16 +11,25 @@ class LearningForm
   validates :content, presence: true, unless: :was_attached?
 
   def was_attached?
-    self.image.is_a?(ActionDispatch::Http::UploadedFile)
+    self.image.present?
   end
 
   def save
     return false unless valid?
-    learning = Learning.create(title: title, content: content, image: image, user_id: user_id)
-    if tag_name.present?
-      tag = Tag.where(tag_name: tag_name).first_or_initialize
-      tag.save
-      LearningTagRelation.create(learning_id: learning.id, tag_id: tag.id)
+    learning = Learning.new(title: title, content: content, user_id: user_id)
+
+    # ここで画像をアタッチ
+    learning.image.attach(image) if image.present?
+
+    if learning.save
+      if tag_name.present?
+        tag = Tag.where(tag_name: tag_name).first_or_initialize
+        tag.save
+        LearningTagRelation.create(learning_id: learning.id, tag_id: tag.id)
+      end
+      true
+    else
+      false
     end
   end
 
