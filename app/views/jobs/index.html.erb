@@ -17,7 +17,14 @@
               <div class="post-content">
                 <%= job.content %>
               </div>
-              <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
+              <div>
+                <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
+              </div>
+              <% if job.tags.first.present? %>
+                <div class="post-tag small btn btn-outline-secondary btn-sm">
+                  <%= job.tags.first&.tag_name %>
+                </div>
+              <% end %>
             </div>
             <div id="like-btn<%= job.id %>">
               <%= render partial: "job_likes/like", locals: { job: job } %>
@@ -38,7 +45,14 @@
               <div class="post-content">
                 <%= job.content %>
               </div>
-              <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
+              <div>
+                <%= image_tag job.image.variant(resize: '500x500'), class: 'message-image' if job.image.attached?%>
+              </div>
+              <% if job.tags.first.present? %>
+                <div class="post-tag small btn btn-outline-secondary btn-sm">
+                  <%= job.tags.first&.tag_name %>
+                </div>
+              <% end %>
             </div>
             <div id="like-btn<%= job.id %>">
               <%= render partial: "job_likes/like", locals: { job: job } %>

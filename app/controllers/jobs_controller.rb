@@ -24,6 +24,7 @@ class JobsController < ApplicationController
     # @jobから情報をハッシュとして取り出し、@job_formとしてインスタンス生成する
     job_attributes = @job.attributes
     @job_form = JobForm.new(job_attributes)
+    @job_form.tag_name = @job.tags.first&.tag_name
   end
 
   def update
@@ -47,7 +48,7 @@ class JobsController < ApplicationController
 
   private
   def job_form_params
-    params.require(:job_form).permit(:title, :content, :image).merge(user_id: current_user.id)
+    params.require(:job_form).permit(:title, :content, :tag_name, :image).merge(user_id: current_user.id)
   end
 
   def set_job

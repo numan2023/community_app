@@ -24,6 +24,7 @@ class LearningsController < ApplicationController
     # @learningから情報をハッシュとして取り出し、@learning_formとしてインスタンス生成する
     learning_attributes = @learning.attributes
     @learning_form = LearningForm.new(learning_attributes)
+    @learning_form.tag_name = @learning.tags.first&.tag_name
   end
 
   def update
@@ -47,7 +48,7 @@ class LearningsController < ApplicationController
 
   private
   def learning_form_params
-    params.require(:learning_form).permit(:title, :content, :image).merge(user_id: current_user.id)
+    params.require(:learning_form).permit(:title, :content, :tag_name, :image).merge(user_id: current_user.id)
   end
 
   def set_learning

@@ -17,7 +17,14 @@
               <div class="post-content">
                 <%= learning.content %>
               </div>
-              <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
+              <div>
+                <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
+              </div>
+              <% if learning.tags.first.present? %>
+                <div class="post-tag small btn btn-outline-secondary btn-sm">
+                  <%= learning.tags.first&.tag_name %>
+                </div>
+              <% end %>
             </div>
             <div id="like-btn<%= learning.id %>">
               <%= render partial: "learning_likes/like", locals: { learning: learning } %>
@@ -38,7 +45,14 @@
               <div class="post-content">
                 <%= learning.content %>
               </div>
-              <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
+              <div>
+                <%= image_tag learning.image.variant(resize: '500x500'), class: 'message-image' if learning.image.attached?%>
+              </div>
+              <% if learning.tags.first.present? %>
+                <div class="post-tag small btn btn-outline-secondary btn-sm">
+                  <%= learning.tags.first&.tag_name %>
+                </div>
+              <% end %>
             </div>
             <div id="like-btn<%= learning.id %>">
               <%= render partial: "learning_likes/like", locals: { learning: learning } %>
@@ -46,7 +60,7 @@
           </div>
         <% end %>
       <% end %>
-      
+
       <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
 
     </main>

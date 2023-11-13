@@ -1,6 +1,8 @@
 class Learning < ApplicationRecord
   belongs_to :user
   has_many :learning_likes
+  has_many :learning_tag_relations
+  has_many :tags, through: :learning_tag_relations
   has_one_attached :image
 
   def self.search(search)
