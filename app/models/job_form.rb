@@ -11,16 +11,25 @@ class JobForm
   validates :content, presence: true, unless: :was_attached?
 
   def was_attached?
-    self.image.is_a?(ActionDispatch::Http::UploadedFile)
+    self.image.present?
   end
 
   def save
     return false unless valid?
-    job = Job.create(title: title, content: content, image: image, user_id: user_id)
-    if tag_name.present?
-      tag = Tag.where(tag_name: tag_name).first_or_initialize
-      tag.save
-      JobTagRelation.create(job_id: job.id, tag_id: tag.id)
+    job = Job.new(title: title, content: content, user_id: user_id)
+
+    # ここで画像をアタッチ
+    job.image.attach(image) if image.present?
+
+    if job.save
+      if tag_name.present?
+        tag = Tag.where(tag_name: tag_name).first_or_initialize
+        tag.save
+        JobTagRelation.create(job_id: job.id, tag_id: tag.id)
+      end
+      true
+    else
+      false
     end
   end
 

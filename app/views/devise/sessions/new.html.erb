@@ -7,6 +7,11 @@
         <%= render "devise/shared/links"%>
       </div>
       <div class='account-page__inner--right user-form'>
+        <%# ログイン時のエラーメッセージ  %>
+        <div class='login-flash-message'>
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
+        </div>
         <%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f|%>
           <div class='field'>
             <div class='field-label'>

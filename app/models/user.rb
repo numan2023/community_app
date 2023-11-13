@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :learning_likes
   has_many :job_likes
 
-  # validates :nickname, :term, :hobby, :learn_reason, :career_pass, :impressed_app, presence: true
+  validates :nickname, :term, :hobby, :learn_reason, :career_pass, :impressed_app, presence: true
 end

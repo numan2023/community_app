@@ -16,7 +16,7 @@ class LearningsController < ApplicationController
       @learning_form.save
       redirect_to action: :index
     else
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
