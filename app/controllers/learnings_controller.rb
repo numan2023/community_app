@@ -1,13 +1,19 @@
 class LearningsController < ApplicationController
+  before_action :set_learning, only: [:edit, :update]
+
   def index
     @learning = Learning.new
-    @learnings = Learning.includes(:user)
+    @learnings = Learning.includes(:user).order("created_at DESC")
+  end
+
+  def new
+    @learning_form = LearningForm.new
   end
 
   def create
-    @learning = Learning.new(learning_params)
-    if @learning.valid?
-      @learning.save
+    @learning_form = LearningForm.new(learning_form_params)
+    if @learning_form.valid?
+      @learning_form.save
       redirect_to action: :index
     else
       render :index, status: :unprocessable_entity
@@ -15,13 +21,24 @@ class LearningsController < ApplicationController
   end
 
   def edit
-    @learning = Learning.find(params[:id])
+    # @learningから情報をハッシュとして取り出し、@learning_formとしてインスタンス生成する
+    learning_attributes = @learning.attributes
+    @learning_form = LearningForm.new(learning_attributes)
   end
 
   def update
-    learning = Learning.find(params[:id])
-    learning.update(learning_params)
-    redirect_to action: :index
+    # paramsの内容を反映したインスタンスを生成する
+    @learning_form = LearningForm.new(learning_form_params)
+
+    # 画像を選択し直していない場合は、既存の画像をセットする
+    @learning_form.image ||= @learning.image.blob
+
+    if @learning_form.valid?
+      @learning_form.update(learning_form_params, @learning)
+      redirect_to action: :index
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def search
@@ -29,8 +46,12 @@ class LearningsController < ApplicationController
   end
 
   private
-  def learning_params
-    params.require(:learning).permit(:title, :content, :image).merge(user_id: current_user.id)
+  def learning_form_params
+    params.require(:learning_form).permit(:title, :content, :image).merge(user_id: current_user.id)
+  end
+
+  def set_learning
+    @learning = Learning.find(params[:id])
   end
 
 end

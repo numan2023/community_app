@@ -3,13 +3,6 @@ class Learning < ApplicationRecord
   has_many :learning_likes
   has_one_attached :image
 
-  validates :title, presence: true
-  validates :content, presence: true, unless: :was_attached?
-
-  def was_attached?
-    self.image.attached?
-  end
-
   def self.search(search)
     if search != ""
       Learning.where('title LIKE(?)', "%#{search}%")

@@ -14,8 +14,8 @@ https://community-app-64tj.onrender.com/
 ## テスト用アカウント
 
 アカウント1：
-- email : yamada@taro.com
-- password : yamada123
+- email : test@test.com
+- password : test123
 
 アカウント2：
 - email : kobayashi@ziro.com

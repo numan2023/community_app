@@ -166,21 +166,16 @@
   </head>
 
   <body>
-
-    <header class="navbar sticky-top bg-dark flex-md-nowrap p-2 shadow" data-bs-theme="dark">
-      <%= link_to 'Tips Community', "/", class: "nav flex-column align-items-center col-md-3 col-lg-2 me-0 px-3 fs-10 text-white nav-template" %>
-    </header>
-
     <div class="container-fluid">
       <div class="row">
         <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
           <div class="offcanvas-lg offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
             <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+              <h4 class="nav bg-dark sticky-top flex-column mb-auto align-items-center pb-1 px-3 mt-3 mb-1 text-body-secondary text-uppercase">
+                <span class="border-bottom"><%= link_to 'Tips Community', "/", class: "text-white" %></span>
+              </h4>
               <h6 class="nav flex-column mb-auto align-items-center pb-1 px-3 mt-3 mb-1 text-body-secondary text-uppercase">
                 <span class="border-bottom">Chat Room</span>
-                <a class="link-secondary" href="#" aria-label="Add a new report">
-
-                </a>
               </h6>
               <ul class="nav flex-column align-items-center">
                 <li class="nav-item">

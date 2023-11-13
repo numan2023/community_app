@@ -1,0 +1,16 @@
+<%= form_with model: @learning_form,  url: url, method: method, id: "form", class: 'sticky-bottom', local: true do |f| %>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">タイトル</label>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル', id: "title" %>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">テキスト</label>
+    <%= f.text_area :content, class: 'form-control', placeholder: 'Tipsを投稿しよう!', id: "content" %>
+  </div>
+  <div class="mb-3">
+    <%= f.file_field :image %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit '送信', class: 'btn btn-outline-secondary', id: "submit" %>
+  </div>
+<% end %>
